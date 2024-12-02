@@ -1,11 +1,10 @@
 <!doctype html>
 <html lang="es">
 	<head>
-		<!-- Required meta tags -->
+		
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		
-		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		
 		<title>GymShark</title>
@@ -20,16 +19,12 @@
 			$fecha_registro = $_POST['fecha_registro'];
 			$contraseña = $_POST['contraseña'];
 			
-			//Establezco conexión
 			require 'conexion.php';
 
 			//Creo una contraseña segura en hash, que es la que introduciré en la base de datos como $encriptado, en vez de $contraseña.
 			$encriptado = password_hash($contraseña,PASSWORD_DEFAULT);
 
-			//Preparo la sentencia SQL
 			$sql = "INSERT INTO cliente (nombre,dni,fecha_nacimiento,email,telefono,fecha_registro,contraseña) VALUES ('$nombre','$dni','$fecha_nacimiento','$email','$telefono','$fecha_registro','$encriptado')";
-
-			//Ejecuto la sentencia y guardo el resultado
 
 			$resultado = $mysqli->query($sql);
 
@@ -43,7 +38,7 @@
 			} else {
 		?>
 				<br>
-  				<p class="alert alert-danger"> Usuario ya registerado, pruebe con otro correo. </p>
+  				<p class="alert alert-danger"> Usuario ya registrado, pruebe con otro correo. </p>
 		<?php		
 			}
 		?>

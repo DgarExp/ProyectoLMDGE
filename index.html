@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GymShark - Inicio</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #121212; /* fondo negro */
+            color: #f1f1f1; /* letras grises */
+        }
+        .navbar {
+            background-color: #343a40; /* fondo */
+        }
+        .navbar a {
+            color: #f1f1f1; /* color de letras */
+        }
+        .navbar a:hover {
+            color: #ffffff; /* tecto al pasar el raton */
+        }
+        .main {
+            text-align: center;
+            padding: 100px 20px;
+            background-color: #1f1f1f; /* fondo */
+            border-bottom: 4px solid #343a40;
+        }
+        .main h1 {
+            font-size: 4rem;
+            color: #f1f1f1;
+        }
+        .main p {
+            font-size: 1.2rem;
+            color: #d3d3d3;
+        }
+        .carousel-inner img {
+        max-height: 400px; /* tamaño */
+        object-fit: cover;
+        width: 100%; /* ancho completo */
+    }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">GymShark</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="cliente.php">Zona Cliente</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="entrenadores.php">Entrenadores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="prueba.php">Clases</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="loginAdmin.php">¿Eres administrador?</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    
+    <section class="main">
+        <h1>Bienvenido a GymShark</h1>
+        <p>Transforma tu vida con el mejor equipo de entrenadores y clases diseñadas para ti.</p>
+        
+        <!-- carrusel --> 
+        <div id="carrusel" class="carousel slide mt-4" data-bs-ride="carrusel"> 
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="Imagenes/carrusel1.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="Imagenes/carrusel2.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="Imagenes/carrusel3.jpg" class="d-block w-100">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carrusel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Anterior</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carrusel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Siguiente</span>
+            </button>
+        </div>
+    </section>
+
+    <section id="zona-cliente" class="container py-5">
+        <h2 class="text-center">Zona Cliente</h2>
+        <p class="text-center">Accede a tu perfil, gestiona tus datos y revisa tu progreso en esta sección.</p>
+        <a href="cliente.php"><img src="Imagenes/clientes.jpg" class="d-block w-100"></a>
+    </section>
+
+    <section id="entrenadores" class="container py-5">
+        <h2 class="text-center">Entrenadores</h2>
+        <p class="text-center">Conoce a nuestros entrenadores profesionales que te ayudarán a alcanzar tus metas.</p>
+        <img src="Imagenes/entrenador.jpg" class="d-block w-100">
+    </section>
+
+    <section id="clases" class="container py-5">
+        <h2 class="text-center">Clases</h2>
+        <p class="text-center">Explora nuestras clases grupales y elige la que mejor se adapte a tus objetivos.</p>
+        <img src="Imagenes/clases.jpg" class="d-block w-100">
+    </section>
+
+    <footer class="text-center py-3" style="background-color: #343a40; color: #f1f1f1;">
+        <p>2024 GymShark. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

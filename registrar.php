@@ -1,11 +1,10 @@
 <!doctype html>
 <html lang="es">
 <head>
-    <!-- Required meta tags -->
+   
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     
     <title>Gym Shark - Registro</title>
@@ -16,11 +15,11 @@
 	<style>
 		body{
 			background-image: url(Imagenes/login2.jpg);
-			background-size: cover; /* Hace que la imagen ocupe todo el fondo */
+			background-size: cover; 
 			background-repeat: no-repeat;
 			background-position: center;
-			opacity: 0.8; /* Ajusta la opacidad para hacerla transparente */
-			filter: alpha(opacity=80); /* Filtro para compatibilidad en navegadores antiguos */
+			opacity: 0.8; 
+			filter: alpha(opacity=80);
 }
 	</style>
     <div class="container mt-5">
@@ -34,52 +33,52 @@
             			</div>
                     </div>
                     <div class="card-body">
-                        <!-- Formulario de registro -->
+                       
                         <form action="registrar2.php" id="registro" name="registro" autocomplete="off" method="post">
                             <div class="form-group">
-                                <!-- Nombre -->
+                                
                                 <label for="nombre">Nombre</label>
                                 <input type="text" name="nombre" id="nombre" class="form-control" placeholder="Introduce tu nombre" required>
                             </div>
 
                             <div class="form-group">
-                                <!-- DNI -->
+                                
                                 <label for="dni">DNI</label>
                                 <input type="number" name="dni" id="dni" class="form-control" placeholder="Introduce tu DNI" required>
                             </div>
 
                             <div class="form-group">
-                                <!-- Fecha de nacimiento -->
+                                
                                 <label for="fecha_nacimiento">Fecha de nacimiento</label>
                                 <input type="date" name="fecha_nacimiento" id="fecha_nacimiento" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <!-- Email -->
+                                
                                 <label for="email">Email</label>
                                 <input type="email" name="email" id="email" class="form-control" placeholder="Introduce tu email" required>
                             </div>
 
                             <div class="form-group">
-                                <!-- Teléfono -->
+                                
                                 <label for="telefono">Teléfono</label>
                                 <input type="number" name="telefono" id="telefono" class="form-control" placeholder="Introduce tu teléfono" required>
                             </div>
 
                             <div class="form-group">
-                                <!-- Fecha de registro -->
+                               
                                 <label for="fecha_registro">Fecha de inicio</label>
                                 <input type="date" name="fecha_registro" id="fecha_registro" class="form-control" required>
                             </div>
 
                             <div class="form-group">
-                                <!-- Contraseña -->
+                                
                                 <label for="contraseña">Contraseña</label>
                                 <input type="password" name="contraseña" id="contraseña" class="form-control" placeholder="Introduce tu contraseña" required>
                             </div>
 
                             <div class="form-group text-center">
-                                <!-- Botón de registro -->
+                               
                                 <input type="submit" value="Registrar" class="btn btn-dark btn-block">
                             </div>
                         </form>
@@ -89,8 +88,6 @@
         </div>
     </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="js/jquery-3.4.1.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 </body>
