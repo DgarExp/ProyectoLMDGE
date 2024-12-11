@@ -1,8 +1,6 @@
 <?php
-    //Nueva conexión de la clase mysqli
-    //Parámetros: ubicación del servidor, nombre de usuario, contraseña, base de datos
-    $mysqli = new mysqli("localhost", "root", "", "proyecto_gym");
-    if($mysqli->connect_errno){
-        echo "Fallo al conectar a MySQL: (", $mysqli->connect_errno, ")", $mysqli->connect_error;
-    } 
-?>
+$mysqli = new mysqli('127.0.0.1', 'root', '', 'proyecto_gym_lm');
+
+if ($mysqli->connect_error) {
+    die("Error de conexión: " . $mysqli->connect_error);
+}
