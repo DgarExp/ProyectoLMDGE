@@ -88,7 +88,7 @@
                         <h4>Registro de Usuario</h4>
                     </div>
                     <div class="card-body">
-                        <form action="registro.php" method="POST">
+                        <form action="registrar2.php" method="POST">
                             <div class="form-group">
                                 <label for="nombre">Nombre Completo</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingrese su nombre" required>
