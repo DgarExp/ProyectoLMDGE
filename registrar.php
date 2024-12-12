@@ -98,8 +98,24 @@
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Ingrese su correo" required>
                             </div>
                             <div class="form-group">
-                                <label for="password">Contraseña</label>
-                                <input type="password" class="form-control" id="password" name="password" placeholder="Ingrese su contraseña" required>
+                                <label for="dni">DNI</label>
+                                <input type="number" class="form-control" id="dni" name="dni" placeholder="Ingrese su dni" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha_nacimiento">Fecha de nacimiento</label>
+                                <input type="date" class="form-control" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="dni">Telefono</label>
+                                <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Ingrese su telefono" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="fecha_registro">Fecha de registro</label>
+                                <input type="date" class="form-control" id="fecha_registro" name="fecha_registro" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contraseña">Contraseña</label>
+                                <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Ingrese su contraseña" required>
                             </div>
                             <button type="submit" class="btn">Registrarse</button>
                         </form>
