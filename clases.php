@@ -51,9 +51,9 @@ $result = $mysqli->query($query);
 
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
-                echo "<td>" . htmlspecialchars($row['nombre_clase']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['dia_semana']) . "</td>";
-                echo "<td>" . htmlspecialchars($row['hora']) . "</td>";
+                echo "<td>{$row['nombre_clase']}</td>";
+                echo "<td>{$row['dia_semana']}</td>";
+                echo "<td>{$row['hora']}</td>";
                 echo "</tr>";
             }
 
