@@ -1,33 +1,8 @@
 <?php
-require 'conexion.php';
 session_start();
 
-$error = '';
-$email = $_POST['email'] ?? '';
-
-// Verificar si el formulario fue enviado y si el campo de email no está vacío
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($email)) {
-    // Crear la consulta directamente
-    $query = "SELECT email, nombre FROM entrenador WHERE email = '$email'";
-    $resultado = $mysqli->query($query);
-
-    // Verificar si el correo existe
-    if ($resultado && $resultado->num_rows > 0) {
-        // Obtener el nombre del entrenador
-        $row = $resultado->fetch_assoc();
-        $nombreEntrenador = $row['nombre'];
-
-        // Guardar el correo y nombre en la sesión
-        $_SESSION['email'] = $email;
-        $_SESSION['nombre'] = $nombreEntrenador;
-
-        // Redirigir a la página de bienvenida del entrenador
-        header('Location: indexEntrenador.php');
-        exit;
-    } else {
-        $error = 'El correo no está registrado.';
-    }
-}
+$error = $_SESSION['error'] ?? ''; 
+unset($_SESSION['error']); 
 ?>
 
 <!DOCTYPE html>
@@ -99,8 +74,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !empty($email)) {
             <div class="col-md-6">
                 <div class="card shadow">
                     <div class="card-body">
-                        <?= !empty($error) ? "<div class='alert alert-danger text-center'>$error</div>" : '' ?>
-                        <form method="POST" action="">
+                        <?php if (!empty($error)): ?>
+                            <div class="alert alert-danger text-center">
+                                <?= htmlspecialchars($error) ?>
+                            </div>
+                        <?php endif; ?>
+                        <form method="POST" action="login_entrenador.php">
                             <div class="mb-3">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder="Ingresa tu email" required>

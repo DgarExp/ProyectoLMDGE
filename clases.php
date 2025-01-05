@@ -35,6 +35,20 @@ $result = $mysqli->query($query);
         tr:nth-child(even) {
             background-color: #666; 
         }
+        .btn-volver {
+            background-color: #555; 
+            color: #fff; 
+            display: block;
+            width: 200px;
+            margin: 30px auto;
+            text-align: center;
+            padding: 10px 0;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+        .btn-volver:hover {
+            background-color: #666;
+        }
     </style>
 </head>
 <body>
@@ -65,6 +79,8 @@ $result = $mysqli->query($query);
 
         $mysqli->close();
         ?>
+
+        <a href="index.html" class="btn-volver">Volver al Inicio</a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

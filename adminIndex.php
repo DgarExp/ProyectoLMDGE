@@ -54,6 +54,14 @@ $resultado = $mysqli->query($query);
         .boton-eliminar:hover {
             background-color: #dc3545; 
         }
+        .boton-comun {
+            background-color: #333; 
+            color: #fff;
+            border: none;
+        }
+        .boton-comun:hover {
+            background-color: #444;
+        }
     </style>
 </head>
 <body>
@@ -75,7 +83,7 @@ $resultado = $mysqli->query($query);
                     <td><?= $row['dia_semana'] ?></td>
                     <td><?= $row['hora'] ?></td>
                     <td>
-                        <form method="POST" action="" class="d-inline">
+                        <form method="POST" action="eliminar.php" class="d-inline">
                             <input type="hidden" name="id_clase" value="<?= $row['id_clase'] ?>">
                             <button type="submit" class="btn boton-eliminar btn-sm">Eliminar</button>
                         </form>
@@ -93,7 +101,8 @@ $resultado = $mysqli->query($query);
         ?>
 
         <div class="text-center">
-            <a href="crearClases.php" class="btn btn-dark btn-lg">Agregar Clase</a>
+            <a href="crear_clase.html" class="btn boton-comun btn-lg">Agregar Clase</a>
+            <a href="index.html" class="btn boton-comun btn-lg ms-3">Volver al Inicio</a>
         </div>
     </div>
 

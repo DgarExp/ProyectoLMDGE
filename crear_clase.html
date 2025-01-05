@@ -1,36 +1,3 @@
-<?php
-require 'conexion.php';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $nombre_clase = $_POST['nombre_clase'];
-    $capacidad = (int) $_POST['capacidad'];
-    $id_entrenador = (int) $_POST['id_entrenador'];
-    $dia_semana = $_POST['dia_semana'];
-    $hora = $_POST['hora'];
-
-    $query_clase = "INSERT INTO clase (nombre_clase, capacidad, id_entrenador, inscritos) VALUES ('$nombre_clase', $capacidad, $id_entrenador, 0)";
-    $result_clase = $mysqli->query($query_clase);
-
-    if ($result_clase) {
-        $id_clase = $mysqli->insert_id; 
-
-        $query_intervalo = "INSERT INTO intervalo (id_clase, dia_semana, hora) VALUES ($id_clase, '$dia_semana', '$hora')";
-        $result_intervalo = $mysqli->query($query_intervalo);
-
-        if ($result_intervalo) {
-            echo '<div class="alert alert-success text-center">Clase añadida con éxito.</div>';
-        } else {
-            echo '<div class="alert alert-danger text-center">Error al añadir el horario de la clase.</div>';
-        }
-    } else {
-        echo '<div class="alert alert-danger text-center">Error al añadir la clase.</div>';
-    }
-}
-
-$query_entrenadores = "SELECT id_entrenador, nombre FROM entrenador";
-$result_entrenadores = $mysqli->query($query_entrenadores);
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -62,7 +29,7 @@ $result_entrenadores = $mysqli->query($query_entrenadores);
     <div class="container mt-5">
         <h1 class="text-center text-uppercase text-light mb-4">Añadir Clases - GymShark</h1>
         <div class="form-container mx-auto" style="max-width: 600px;">
-            <form method="POST" action="">
+            <form method="POST" action="crear_clase.php">
                 <div class="mb-3">
                     <label for="nombre_clase" class="form-label">Nombre de la Clase</label>
                     <input type="text" class="form-control" id="nombre_clase" name="nombre_clase" required>
@@ -75,9 +42,11 @@ $result_entrenadores = $mysqli->query($query_entrenadores);
                     <label for="id_entrenador" class="form-label">Entrenador</label>
                     <select class="form-select" id="id_entrenador" name="id_entrenador" required>
                         <option value="" disabled selected>Seleccione un entrenador</option>
-                        <?php while ($row = $result_entrenadores->fetch_assoc()) { ?>
-                            <option value="<?= $row['id_entrenador'] ?>"><?= $row['nombre'] ?></option>
-                        <?php } ?>
+                        <option value="1">Damián</option>
+                        <option value="2">Juan</option>
+                        <option value="3">Manolo</option>
+                        <option value="4">Manuel</option>
+                        <option value="5">Jesus</option>
                     </select>
                 </div>
                 <div class="mb-3">

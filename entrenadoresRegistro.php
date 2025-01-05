@@ -1,22 +1,3 @@
-<?php
-require 'conexion.php';
-
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = $_POST['nombre'] ?? '';
-    $email = $_POST['email'] ?? '';
-    $telefono = $_POST['telefono'] ?? '';
-
-    if (!empty($nombre) && !empty($email) && !empty($telefono)) {
-        $query = "INSERT INTO entrenador (nombre, email, telefono) VALUES ('$nombre', '$email', '$telefono')";
-        $resultado = $mysqli->query($query);
-
-        if (!$resultado) {
-            echo "<p class='alert alert-danger'>Hubo un error al registrar al entrenador: " . $mysqli->error . "</p>";
-        }
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -24,7 +5,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Imagenes/icono.png" type="image/x-icon">
     <title>Administrador de GymShark</title>
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
@@ -81,11 +61,25 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="container">
         <h1 class="header-title">GymShark</h1>
+
+        <?php
+        require 'entrenadoresRegistro1.php'; // Llamar al archivo backend para el procesamiento
+
+        if ($success): ?>
+            <div class="alert alert-success text-center">
+                <?= $success; ?>
+            </div>
+        <?php elseif ($error): ?>
+            <div class="alert alert-danger text-center">
+                <?= $error; ?>
+            </div>
+        <?php endif; ?>
+
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow">
                     <div class="card-body">
-                        <form method="POST" action="">
+                        <form method="POST" action="entrenadoresRegistro.php">
                             <div class="mb-3">
                                 <label for="nombre" class="form-label">Nombre</label>
                                 <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" required>
@@ -100,7 +94,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             </div>
                             <button type="submit" class="btn boton-registro w-100">Registrar Entrenador</button>
                         </form>
-                        <a href="loginEntrenador.php" class="btn boton-inicio w-100 text-center">Inicia Sesión</a>
+                        <a href="login_entrenador2.php" class="btn boton-inicio w-100 text-center">Inicia Sesión</a>
                     </div>
                 </div>
             </div>
