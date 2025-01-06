@@ -1,38 +1,8 @@
 <?php
 require 'conexion.php';
 
-$message = ''; // Variable para el mensaje de éxito o error
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Obtener los datos del formulario
-    $nombre_clase = $_POST['nombre_clase'];
-    $capacidad = (int) $_POST['capacidad'];
-    $id_entrenador = (int) $_POST['id_entrenador'];
-    $dia_semana = $_POST['dia_semana'];
-    $hora = $_POST['hora'];
-
-    // Insertar clase en la base de datos
-    $query_clase = "INSERT INTO clase (nombre_clase, capacidad, id_entrenador, inscritos) VALUES ('$nombre_clase', $capacidad, $id_entrenador, 0)";
-    $result_clase = $mysqli->query($query_clase);
-
-    if ($result_clase) {
-        // Obtener el ID de la clase recién insertada
-        $id_clase = $mysqli->insert_id; 
-
-        // Insertar intervalo (hora y día) de la clase
-        $query_intervalo = "INSERT INTO intervalo (id_clase, dia_semana, hora) VALUES ($id_clase, '$dia_semana', '$hora')";
-        $result_intervalo = $mysqli->query($query_intervalo);
-
-        // Establecer el mensaje de éxito
-        if ($result_intervalo) {
-            $message = 'Clase añadida con éxito.';
-        } else {
-            $message = 'Error al añadir el horario de la clase.';
-        }
-    } else {
-        $message = 'Error al añadir la clase.';
-    }
-}
+$query_entrenador = "SELECT id_entrenador, nombre FROM entrenador";
+$result_entrenador = $mysqli->query($query_entrenador);
 ?>
 
 <!DOCTYPE html>
@@ -41,39 +11,76 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="Imagenes/icono.png" type="image/x-icon">
-    <title>Resultado - GymShark</title>
+    <title>Añadir Clases - GymShark</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
             background-color: #333;
             color: #ddd;
         }
-        .alert-custom {
-            background-color: #555; /* Gris más suave en lugar de negro */
-            color: #fff;
-            border-color: #ccc;
+        .form-container {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
-        .btn-custom {
-            background-color: #dc3545;
-            color: white;
+        .boton-añadir {
+            background-color: #555;
         }
-        .btn-custom:hover {
-            background-color: #c82333;
+        .boton-añadir:hover {
+            background-color: #666;
         }
     </style>
 </head>
 <body>
     <div class="container mt-5">
-        <!-- Mostrar mensaje de éxito o error -->
-        <?php if (!empty($message)): ?>
-            <div class="alert alert-custom text-center">
-                <?= htmlspecialchars($message) ?>
-            </div>
-        <?php endif; ?>
-
-        <!-- Botón para volver al formulario -->
-        <div class="text-center">
-            <a href="crear_clase.html" class="btn btn-custom btn-lg">Volver al formulario</a>
+        <h1 class="text-center text-uppercase text-light mb-4">Añadir Clases - GymShark</h1>
+        <div class="form-container mx-auto" style="max-width: 600px;">
+            <form method="POST" action="crear_clase.php">
+                <div class="mb-3">
+                    <label for="nombre_clase" class="form-label">Nombre de la Clase</label>
+                    <input type="text" class="form-control" id="nombre_clase" name="nombre_clase" required>
+                </div>
+                <div class="mb-3">
+                    <label for="capacidad" class="form-label">Capacidad</label>
+                    <input type="number" class="form-control" id="capacidad" name="capacidad" min="1" required>
+                </div>
+                <div class="mb-3">
+                    <label for="id_entrenador" class="form-label">Entrenador</label>
+                    <select class="form-select" id="id_entrenador" name="id_entrenador" required>
+                        <option value="">Seleccione un entrenador</option>
+                        <?php
+                        if ($result_entrenador->num_rows > 0) {
+                            while ($entrenador = $result_entrenador->fetch_assoc()) {
+                                echo "<option value='" . $entrenador['id_entrenador'] . "'>" . $entrenador['nombre'] . "</option>";
+                            }
+                        } else {
+                            echo "<option>No hay entrenadores disponibles</option>";
+                        }
+                        ?>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="dia_semana" class="form-label">Día de la Semana</label>
+                    <select class="form-select" id="dia_semana" name="dia_semana" required>
+                        <option value="Lunes">Lunes</option>
+                        <option value="Martes">Martes</option>
+                        <option value="Miércoles">Miércoles</option>
+                        <option value="Jueves">Jueves</option>
+                        <option value="Viernes">Viernes</option>
+                        <option value="Sábado">Sábado</option>
+                        <option value="Domingo">Domingo</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="hora" class="form-label">Hora</label>
+                    <input type="time" class="form-control" id="hora" name="hora" required>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn boton-añadir btn-lg">Añadir Clase</button>
+                    <a href="index.html" class="btn boton-volver btn-lg">Volver al Inicio</a>
+                </div>
+            </form>
         </div>
     </div>
 

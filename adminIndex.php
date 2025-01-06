@@ -101,7 +101,7 @@ $resultado = $mysqli->query($query);
         ?>
 
         <div class="text-center">
-            <a href="crear_clase.html" class="btn boton-comun btn-lg">Agregar Clase</a>
+            <a href="crear_clase.php" class="btn boton-comun btn-lg">Agregar Clase</a>
             <a href="index.html" class="btn boton-comun btn-lg ms-3">Volver al Inicio</a>
         </div>
     </div>
