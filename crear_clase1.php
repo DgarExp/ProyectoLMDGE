@@ -69,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif; ?>
 
         <div class="text-center">
-            <a href="crear_clase.html" class="btn btn-custom btn-lg">Volver al formulario</a>
+            <a href="index.html" class="btn btn-custom btn-lg">Volver al inicio</a>
         </div>
     </div>
 

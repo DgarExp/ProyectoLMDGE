@@ -36,7 +36,7 @@ $result_entrenador = $mysqli->query($query_entrenador);
     <div class="container mt-5">
         <h1 class="text-center text-uppercase text-light mb-4">Añadir Clases - GymShark</h1>
         <div class="form-container mx-auto" style="max-width: 600px;">
-            <form method="POST" action="crear_clase.php">
+            <form method="POST" action="crear_clase1.php">
                 <div class="mb-3">
                     <label for="nombre_clase" class="form-label">Nombre de la Clase</label>
                     <input type="text" class="form-control" id="nombre_clase" name="nombre_clase" required>
